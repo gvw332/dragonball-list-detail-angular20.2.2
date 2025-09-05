@@ -1,0 +1,36 @@
+<div class="character-detail" *ngIf="character">
+  <div class="left-column">
+    <h2>{{ character.name }}</h2>
+    <img [src]="character.image" [alt]="character.name" class="character-image">
+    <div class="left-colomn-transformations">
+      @if (character.transformations?.length) {
+      <li class="transformations">
+        <strong>Transformations:</strong>
+        <div class="transformation-list">
+          @for (transformation of character.transformations; track transformation.id) {
+          <div class="transformation-item">
+            <span>{{ transformation.name }}</span>
+            <img [src]="transformation.image" [alt]="transformation.name" />
+          </div>
+          }
+        </div>
+      </li>
+      }
+    </div>
+  </div>
+
+  <div class="right-column">
+    <ul>
+      <li><strong>Race:</strong> {{ character.race }}</li>
+      <li><strong>Gender:</strong> {{ character.gender }}</li>
+      <li><strong>Affiliation:</strong> {{ character.affiliation }}</li>
+      <li><strong>Description:</strong> {{ character.description }}</li>
+      <li><strong>Ki:</strong> {{ character.ki }} / {{ character.maxKi }}</li>
+      @if (character.originPlanet) {<li><strong>Origin Planet:</strong> {{ character.originPlanet.name}}</li>}
+      @if (character.originPlanet) {<li><strong>Planet:</strong> <img [src]="character.originPlanet.image"
+          [alt]="character.originPlanet.description" /></li>}
+
+
+    </ul>
+  </div>
+</div>

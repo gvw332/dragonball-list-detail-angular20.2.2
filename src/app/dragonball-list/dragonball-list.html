@@ -1,0 +1,27 @@
+<img src="assets/images/DBZ.png" alt="Dragon Ball Logo" class="logo" />
+<div class="character-grid">
+  @for (item of characters.items; track item.id) {
+  <div class="character-card" [routerLink]="['/detail', item.id]">
+    <img [src]="item.image" [alt]="item.name" class="character-image" />
+
+    <div class="card-content">
+      <h3>{{ item.name }}</h3>
+      <p><strong>Race :</strong> {{ item.race }}</p>
+      <p><strong>Genre :</strong> {{ item.gender }}</p>
+      <p><strong>Affiliation :</strong> {{ item.affiliation }}</p>
+      <div class="ki-bar-container">
+        <div class="ki-bar" [style.width.%]="getKiPercentage(item)" [style.backgroundColor]="getKiColor(item)"
+          [attr.data-value]="item.ki + ' / ' + item.maxKi"></div>
+      </div>
+      <p><strong>Ki : </strong>{{item.ki}}</p>
+      <p><strong>maxKi : </strong>{{item.maxKi}}</p>
+    </div>
+  </div>
+  }
+</div>
+
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">← Précédent</button>
+  <span>Page {{ currentPage }} / {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant →</button>
+</div>

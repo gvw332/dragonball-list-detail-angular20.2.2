@@ -1,0 +1,157 @@
+/* ------------------ LOGO ------------------ */
+.logo {
+  height: 100px;
+  width: auto;
+  margin: 1rem auto;
+  display: block;
+  filter: drop-shadow(0 0 5px #ff9100);
+}
+/* ------------------ GRILLE ------------------ */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* ------------------ CARTE ------------------ */
+.character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centre horizontalement tout le contenu */
+  background: #1c1c1c;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  }
+ margin-bottom: 50px;
+}
+
+/* ------------------ IMAGE ------------------ */
+
+.character-image-container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 0.5rem;
+  // box-sizing: border-box; /* s’assure que le padding est inclus dans la largeur */
+
+}
+
+.character-image {
+  max-height: 300px;
+  max-width: 300px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 2;
+  display: block; /* évite que l’image prenne l’espace inline */
+      &:hover {
+    transform: scale(1.2) translateY(-10px);
+    }
+}
+/* ------------------ CONTENU TEXTE ------------------ */
+.card-content {
+  padding: 1rem;
+
+  h3 {
+    margin-top: 0;
+    color: #fdd835;
+  }
+
+  p {
+    margin: 0.3rem 0;
+  }
+}
+
+/* ------------------ JAUDE DE PUISSANCE ------------------ */
+.ki-bar-container {
+  background-color: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 16px;
+  margin-top: 0.5rem;
+  position: relative;
+
+  &::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -22px;
+    right: 0;
+    font-size: 12px;
+    color: #ccc;
+  }
+}
+
+.ki-bar {
+  height: 100%;
+  transition: width 0.4s ease, background-color 0.3s ease;
+  border-radius: 6px 0 0 6px; /* arrondi gauche seulement */
+}
+
+/* ------------------ PAGINATION ------------------ */
+.pagination {
+  position: fixed;       /* fixe la pagination à l'écran */
+  bottom: 0;             /* en bas */
+  left: 0;               /* commence à gauche */
+  width: 100%;           /* prend toute la largeur */
+  text-align: center;
+  padding: 1rem 0;       /* espace vertical */
+  background-color: rgba(0, 0, 0, 0.8); /* fond semi-transparent pour la lisibilité */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;         /* pour être au-dessus de tout */
+
+  button {
+    background-color: #fdd835;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #ffeb3b;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 768px) {
+  .character-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .character-image-container {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .character-image-container {
+    height: 180px;
+  }
+}
