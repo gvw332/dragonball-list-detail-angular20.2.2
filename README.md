@@ -1,3 +1,9 @@
+# utilisation de l'api web.dragonball-api.com ouverture en 1 clique via stackblitz  
+
+Voici mon projet dragonball-list-detail-angular20.2.2
+
+💻 [Voir en ligne sur StackBlitz](https://stackblitz.com/~/github.com/gvw332/dragonball-list-detail-angular20.2.2)
+
 # DragonballApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
